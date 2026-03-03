@@ -1,0 +1,487 @@
+/* Airbnb-inspired Design System */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+:root {
+  --primary-color: #0f172a;
+  --secondary-color: #ffb703;
+  --text-dark: #1e293b;
+  --text-light: #64748b;
+  --bg-light: #f8fafc;
+  --bg-card: #ffffff;
+  --white: #ffffff;
+  --border-color: #e2e8f0;
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.05), 0 4px 6px -2px rgba(0, 0, 0, 0.025);
+  --radius-md: 12px;
+  --radius-lg: 20px;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  color: var(--text-dark);
+  background-color: var(--bg-light);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Typography */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: 700;
+  color: var(--text-dark);
+}
+
+.text-subtle {
+  color: var(--text-light);
+}
+
+/* Cards */
+.card-custom {
+  background: var(--white);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  overflow: hidden;
+  color: var(--text-dark);
+}
+
+.card-custom:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+  border-color: #cbd5e1;
+}
+
+/* Buttons */
+.btn-primary {
+  background-color: var(--primary-color);
+  border-color: var(--primary-color);
+  font-weight: 600;
+  padding: 12px 24px;
+  border-radius: 10px;
+  transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+  background-color: #1e293b;
+  border-color: #1e293b;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.2);
+}
+
+.btn-outline-primary {
+  color: var(--primary-color);
+  border-color: var(--border-color);
+  font-weight: 600;
+  border-radius: 10px;
+  transition: all 0.3s ease;
+  background: transparent;
+}
+
+.btn-outline-primary:hover {
+  background-color: var(--bg-light);
+  color: var(--primary-color);
+  border-color: #cbd5e1;
+  transform: translateY(-2px);
+}
+
+/* Inputs */
+.form-control {
+  border-radius: 10px;
+  border: 1px solid #cbd5e1;
+  padding: 12px 16px;
+  background-color: #ffffff;
+  transition: all 0.2s ease-in-out;
+  color: var(--text-dark);
+}
+
+.form-control:focus {
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.15);
+  outline: none;
+}
+
+/* Navbar */
+.navbar-custom {
+  background-color: var(--white);
+  border-bottom: 1px solid var(--border-color);
+  padding: 16px 0;
+}
+
+.navbar-brand {
+  font-weight: 700;
+  color: var(--primary-color) !important;
+  font-size: 1.5rem;
+}
+
+/* Utilities */
+.rounded-xl {
+  border-radius: var(--radius-md) !important;
+}
+
+.shadow-custom {
+  box-shadow: var(--shadow-md);
+}
+
+.nav-link-hover {
+  opacity: 0.8;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.nav-link-hover:hover {
+  opacity: 1;
+  transform: translateY(-1px);
+}
+
+/* Premium Login Page Aesthetics */
+.login-page-wrapper {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(-45deg, #0F4C81, #1a2a6c, #11998e, #38ef7d);
+  background-size: 400% 400%;
+  animation: bgGradient 15s ease infinite;
+  position: relative;
+  overflow: hidden;
+  font-family: 'Inter', sans-serif;
+}
+
+@keyframes bgGradient {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Floating Shapes Background */
+.floating-shapes {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.shape {
+  position: absolute;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  backdrop-filter: blur(5px);
+  animation: float 20s infinite linear;
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(100vh) scale(0);
+    opacity: 0;
+  }
+
+  50% {
+    opacity: 1;
+  }
+
+  100% {
+    transform: translateY(-20vh) scale(1.5);
+    opacity: 0;
+  }
+}
+
+/* Glassmorphism Card */
+.glass-card {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.2);
+  border-radius: 20px;
+  padding: 40px;
+  width: 100%;
+  max-width: 480px;
+  z-index: 2;
+  transition: transform 0.3s ease;
+}
+
+.glass-card:hover {
+  transform: translateY(-5px);
+}
+
+.brand-title {
+  font-weight: 800;
+  font-size: 2rem;
+  background: -webkit-linear-gradient(45deg, #0F4C81, #536dfe);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 10px;
+}
+
+.brand-subtitle {
+  color: var(--text-light);
+  font-size: 0.95rem;
+  font-weight: 500;
+  margin-bottom: 30px;
+}
+
+/* Customizing Bootstrap over glass */
+.glass-card .nav-tabs {
+  border-bottom: 2px solid #E2E8F0;
+  margin-bottom: 24px;
+}
+
+.glass-card .nav-tabs .nav-link {
+  border: none;
+  color: var(--text-light);
+  font-weight: 600;
+  padding: 12px 16px;
+  transition: all 0.3s ease;
+}
+
+.glass-card .nav-tabs .nav-link:hover {
+  border: none;
+  color: var(--primary-color);
+}
+
+.glass-card .nav-tabs .nav-link.active {
+  background: transparent;
+  color: var(--primary-color);
+  border-bottom: 3px solid var(--primary-color);
+}
+
+.glass-card .form-control {
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid #CBD5E1;
+  border-radius: 12px;
+  padding: 12px 16px;
+  transition: all 0.2s ease;
+  font-size: 0.95rem;
+}
+
+.glass-card .form-control:focus {
+  background: #FFFFFF;
+  border-color: var(--secondary-color);
+  box-shadow: 0 0 0 4px rgba(83, 109, 254, 0.15);
+}
+
+.glass-card .btn-primary {
+  background: linear-gradient(45deg, #0F4C81, #536dfe);
+  border: none;
+  border-radius: 12px;
+  padding: 12px;
+  font-size: 1.05rem;
+  font-weight: 700;
+  transition: all 0.3s ease;
+  letter-spacing: 0.5px;
+}
+
+.glass-card .btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 16px rgba(83, 109, 254, 0.3);
+}
+
+.glass-card .form-label {
+  font-weight: 600;
+  color: #334155;
+  font-size: 0.9rem;
+  margin-bottom: 8px;
+}
+
+/* ====== Login Home Page - Dark Immersive Theme ====== */
+.login-home-bg {
+  background: #0a192f;
+  background-image:
+    radial-gradient(ellipse at 20% 80%, rgba(100, 255, 218, 0.15) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 20%, rgba(83, 109, 254, 0.15) 0%, transparent 50%),
+    radial-gradient(ellipse at 60% 60%, rgba(124, 77, 255, 0.1) 0%, transparent 50%);
+}
+
+/* Grid overlay */
+.login-home-bg::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(100, 255, 218, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(100, 255, 218, 0.03) 1px, transparent 1px);
+  background-size: 40px 40px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Logo pulse animation */
+.logo-pulse {
+  display: inline-block;
+  animation: logoPulse 3s ease-in-out infinite;
+  filter: drop-shadow(0 0 12px rgba(100, 255, 218, 0.4));
+}
+
+@keyframes logoPulse {
+
+  0%,
+  100% {
+    transform: scale(1);
+    filter: drop-shadow(0 0 12px rgba(100, 255, 218, 0.4));
+  }
+
+  50% {
+    transform: scale(1.08);
+    filter: drop-shadow(0 0 25px rgba(100, 255, 218, 0.7));
+  }
+}
+
+/* Container for glowing orbs */
+.home-bg-shapes {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Base orb style */
+.home-shape {
+  position: absolute;
+  border-radius: 50%;
+  opacity: 0;
+  animation: homeFloat linear infinite;
+}
+
+/* Orb 1 - Large teal glow */
+.home-shape-1 {
+  width: 250px;
+  height: 250px;
+  left: 5%;
+  background: radial-gradient(circle, rgba(100, 255, 218, 0.25) 0%, transparent 70%);
+  box-shadow: 0 0 80px rgba(100, 255, 218, 0.2);
+  animation-duration: 15s;
+  animation-delay: 0s;
+}
+
+/* Orb 2 - Blue neon ring */
+.home-shape-2 {
+  width: 160px;
+  height: 160px;
+  left: 55%;
+  border: 2px solid rgba(83, 109, 254, 0.5);
+  background: transparent;
+  box-shadow: 0 0 30px rgba(83, 109, 254, 0.2), inset 0 0 30px rgba(83, 109, 254, 0.1);
+  animation-duration: 18s;
+  animation-delay: 1s;
+}
+
+/* Orb 3 - Purple rounded square */
+.home-shape-3 {
+  width: 100px;
+  height: 100px;
+  left: 30%;
+  border-radius: 24px;
+  background: rgba(124, 77, 255, 0.2);
+  box-shadow: 0 0 40px rgba(124, 77, 255, 0.15);
+  animation-duration: 13s;
+  animation-delay: 3s;
+}
+
+/* Orb 4 - Small bright teal dot */
+.home-shape-4 {
+  width: 40px;
+  height: 40px;
+  left: 78%;
+  background: rgba(100, 255, 218, 0.5);
+  box-shadow: 0 0 20px rgba(100, 255, 218, 0.4);
+  animation-duration: 10s;
+  animation-delay: 0.5s;
+}
+
+/* Orb 5 - Large pink ring */
+.home-shape-5 {
+  width: 200px;
+  height: 200px;
+  left: 35%;
+  border: 2px solid rgba(255, 107, 157, 0.3);
+  background: transparent;
+  box-shadow: 0 0 40px rgba(255, 107, 157, 0.1);
+  animation-duration: 20s;
+  animation-delay: 5s;
+}
+
+/* Orb 6 - Blue glow ball */
+.home-shape-6 {
+  width: 130px;
+  height: 130px;
+  left: 15%;
+  background: radial-gradient(circle, rgba(83, 109, 254, 0.3) 0%, transparent 70%);
+  box-shadow: 0 0 60px rgba(83, 109, 254, 0.2);
+  animation-duration: 16s;
+  animation-delay: 2s;
+}
+
+@keyframes homeFloat {
+  0% {
+    transform: translateY(100vh) scale(0.4) rotate(0deg);
+    opacity: 0;
+  }
+
+  5% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0.9;
+  }
+
+  90% {
+    opacity: 0.6;
+  }
+
+  100% {
+    transform: translateY(-15vh) scale(1.2) rotate(60deg);
+    opacity: 0;
+  }
+}
+
+/* Dark theme tab overrides */
+.login-home-bg .nav-tabs {
+  border: none;
+}
+
+.login-home-bg .nav-tabs .nav-link {
+  color: #8892b0;
+  border: none;
+  font-weight: 600;
+}
+
+.login-home-bg .nav-tabs .nav-link.active {
+  color: #64ffda;
+  background: transparent;
+  border-bottom: 2px solid #64ffda;
+}
+
+.login-home-bg .nav-tabs .nav-link:hover {
+  color: #ccd6f6;
+  border: none;
+}
+
+/* Dark theme input styling */
+.login-home-bg .form-control::placeholder {
+  color: rgba(136, 146, 176, 0.6);
+}
+
+.login-home-bg .form-control:focus {
+  border-color: rgba(100, 255, 218, 0.4);
+  box-shadow: 0 0 0 3px rgba(100, 255, 218, 0.1);
+  background: rgba(255, 255, 255, 0.08);
+}
