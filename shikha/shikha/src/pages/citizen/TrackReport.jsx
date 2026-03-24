@@ -15,7 +15,7 @@ const TrackReport = () => {
         setLoading(true);
         try {
             console.log("📡 FETCHING REPORTS FROM API...");
-            const response = await axios.get('http://127.0.0.1:5001/api/reports');
+            const response = await axios.get('/api/reports');
             console.log("📋 REPORTS RECEIVED:", response.data.length);
             setReports(response.data);
         } catch (error) {

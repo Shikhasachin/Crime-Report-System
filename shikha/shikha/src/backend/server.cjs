@@ -2,6 +2,10 @@ const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
 const bcrypt = require('bcryptjs');
+const jwt = require('jsonwebtoken');
+
+// Secret Key for JWT
+const JWT_SECRET = process.env.JWT_SECRET || 'super_secret_jwt_key_here';
 
 const app = express();
 
@@ -11,7 +15,9 @@ app.use(cors({ origin: "*" }));
 app.use(express.json());
 
 // --- 2. MONGODB CONNECTION ---
-mongoose.connect('mongodb://127.0.0.1:27017/crimePortalDB')
+const MONGODB_URI = process.env.MONGO_URI || process.env.MONGODB_URI || 'mongodb://127.0.0.1:27017/crimePortalDB';
+
+mongoose.connect(MONGODB_URI)
   .then(async () => {
     console.log("✅ Connected to MongoDB (crimePortalDB)");
     // THIS IS THE FIX: This clears old "Required" rules that might be blocking your saves
@@ -186,6 +192,20 @@ const Tip = mongoose.model('Tip', tipSchema);
 
 // --- 4. ROUTES ---
 
+// --- AUTHORIZATION MIDDLEWARE ---
+const authenticateToken = (req, res, next) => {
+  const authHeader = req.headers['authorization'];
+  const token = authHeader && authHeader.split(' ')[1]; // Format: "Bearer <token>"
+
+  if (!token) return res.status(401).json({ message: "Access Denied. No token provided." });
+
+  jwt.verify(token, JWT_SECRET, (err, user) => {
+    if (err) return res.status(403).json({ message: "Invalid or expired token." });
+    req.user = user;
+    next();
+  });
+};
+
 // Health Check
 app.get('/', (req, res) => res.send("🚀 Police Server is Live!"));
 
@@ -213,8 +233,17 @@ app.post('/api/auth/login', async (req, res) => {
     if (!user || !(await bcrypt.compare(password, user.password))) {
       return res.status(401).json({ message: "Invalid email or password" });
     }
+
+    // Generate JWT
+    const token = jwt.sign(
+      { userId: user._id, role: user.role, email: user.email },
+      JWT_SECRET,
+      { expiresIn: '1h' }
+    );
+
     res.json({
       message: "Login successful",
+      token, // Send token to client
       user: { _id: user._id, username: user.username, email: user.email, role: user.role }
     });
   } catch (error) {
@@ -422,7 +451,7 @@ app.get('/api/tips', async (req, res) => {
 });
 
 // --- 5. START SERVER ---
-const PORT = 5001;
+const PORT = process.env.PORT || 5001;
 app.listen(PORT, () => {
   console.log(`🚀 Server running at http://localhost:${PORT}`);
 });

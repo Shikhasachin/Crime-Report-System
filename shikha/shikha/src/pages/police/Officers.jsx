@@ -21,7 +21,7 @@ const Officers = () => {
 
     const fetchOfficers = async () => {
         try {
-            const res = await axios.get("http://127.0.0.1:5001/api/officers");
+            const res = await axios.get("/api/officers");
             setOfficers(res.data);
         } catch (err) {
             console.error("Error fetching officers:", err);
@@ -31,7 +31,7 @@ const Officers = () => {
     const handleAddOfficer = async (e) => {
         e.preventDefault();
         try {
-            await axios.post("http://127.0.0.1:5001/api/officers", newOfficer);
+            await axios.post("/api/officers", newOfficer);
             setShowModal(false);
             setNewOfficer({ name: "", badgeNumber: "", rank: "Constable", department: "General", contact: "", email: "" });
             fetchOfficers();

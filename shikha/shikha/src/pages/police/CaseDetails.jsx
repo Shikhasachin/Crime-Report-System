@@ -22,7 +22,7 @@ const CaseDetails = () => {
 
     const fetchData = async () => {
         try {
-            const res = await axios.get("http://127.0.0.1:5001/api/reports");
+            const res = await axios.get("/api/reports");
             // The route returns all reports, so find the one with reportId matching the URL param id
             const found = res.data.find(r => r.reportId === id || r._id === id);
 
@@ -32,7 +32,7 @@ const CaseDetails = () => {
                 setAssignedOfficerId(found.assignedOfficer || '');
 
                 // Fetch case updates for this specific report
-                const updatesRes = await axios.get(`http://127.0.0.1:5001/api/reports/${found.reportId}/updates`);
+                const updatesRes = await axios.get(`/api/reports/${found.reportId}/updates`);
                 setCaseUpdates(updatesRes.data);
             } else {
                 alert('Case not found');
@@ -48,7 +48,7 @@ const CaseDetails = () => {
 
     const fetchOfficers = async () => {
         try {
-            const res = await axios.get("http://127.0.0.1:5001/api/officers");
+            const res = await axios.get("/api/officers");
             setOfficers(res.data);
         } catch (err) {
             console.error("Error fetching officers:", err);
@@ -67,7 +67,7 @@ const CaseDetails = () => {
         try {
             // 1. If status or officer changed, PATCH the report
             if (statusChanged || officerChanged) {
-                await axios.patch(`http://127.0.0.1:5001/api/reports/${report.reportId}`, {
+                await axios.patch(`/api/reports/${report.reportId}`, {
                     status,
                     assignedOfficer: assignedOfficerId
                 });
@@ -79,7 +79,7 @@ const CaseDetails = () => {
                 officerChanged ? `Assigned officer changed to "${assignedOfficerId || 'Unassigned'}"` : '']
                     .filter(Boolean).join('. ');
 
-            await axios.post("http://127.0.0.1:5001/api/case-updates", {
+            await axios.post("/api/case-updates", {
                 reportId: report.reportId,
                 updateDescription,
                 statusChange: statusChanged ? status : '',

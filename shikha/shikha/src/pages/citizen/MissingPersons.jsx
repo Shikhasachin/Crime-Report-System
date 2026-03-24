@@ -13,7 +13,7 @@ const MissingPersons = () => {
                 // For demonstration, we mix 'Wanted' records with 'Missing' status
                 // If backend does not have exact categories, we fetch all and mock some as "Missing" 
                 // Alternatively, we just display ones tagged "Missing"
-                const res = await axios.get('http://127.0.0.1:5001/api/criminal-records');
+                const res = await axios.get('/api/criminal-records');
 
                 // MOCK DATA GENERATION: Create a standalone missing persons directory visually
                 const mockMissingList = [

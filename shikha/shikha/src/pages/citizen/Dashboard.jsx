@@ -23,9 +23,9 @@ const Dashboard = () => {
         const fetchDashboardData = async () => {
             try {
                 const [repRes, alertRes, wantedRes] = await Promise.all([
-                    axios.get('http://127.0.0.1:5001/api/reports'),
-                    axios.get('http://127.0.0.1:5001/api/alerts'),
-                    axios.get('http://127.0.0.1:5001/api/criminal-records')
+                    axios.get('/api/reports'),
+                    axios.get('/api/alerts'),
+                    axios.get('/api/criminal-records')
                 ]);
 
                 // Filter reports for the current user

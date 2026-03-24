@@ -51,7 +51,7 @@ const AnonymousTip = () => {
                 evidence: formData.evidence
             };
 
-            const response = await axios.post('http://127.0.0.1:5001/api/reports/submit', tipData);
+            const response = await axios.post('/api/reports/submit', tipData);
 
             if (response.status === 201 || response.status === 200) {
                 setSuccess('Your tip has been securely submitted. Your identity is completely protected.');
@@ -138,7 +138,7 @@ const AnonymousTip = () => {
                             </div>
                             <h2 style={{ color: '#001f3f', fontWeight: '900', letterSpacing: '1px' }}>ID PROTECTION PORTAL</h2>
                             <p style={{ color: '#ffc107', fontSize: '0.75rem', fontWeight: 'bold', letterSpacing: '2px' }}>
-                                ANONYMOUS TIPS · SECURE · ENCRYPTED
+                                ANONYMOUS TIPS · SECURE ·
                             </p>
                         </div>
 

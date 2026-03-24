@@ -79,7 +79,7 @@ const FileReport = () => {
 
             // Using 127.0.0.1 instead of localhost for Windows reliability
             const response = await axios.post(
-                "http://127.0.0.1:5001/api/reports/submit",
+                "/api/reports/submit",
                 reportData
             );
 
@@ -246,7 +246,7 @@ const FileReport = () => {
                                     <Form.Check
                                         className="text-dark small fw-bold"
                                         type="checkbox"
-                                        label="FILE ANONYMOUSLY (ENCRYPT IDENTITY)"
+                                        label="FILE ANONYMOUSLY"
                                         name="isAnonymous"
                                         id="anonymous-check"
                                         checked={formData.isAnonymous}

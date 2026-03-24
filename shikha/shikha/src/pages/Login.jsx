@@ -24,10 +24,10 @@ const Login = () => {
         setError('');
         setLoading(true);
         try {
-            const response = await axios.post('http://127.0.0.1:5001/api/auth/login', { email, password });
+            const response = await axios.post('/api/auth/login', { email, password });
             const mockOtp = Math.floor(100000 + Math.random() * 900000).toString();
             setGeneratedOtp(mockOtp);
-            setUserData(response.data.user);
+            setUserData({ ...response.data.user, token: response.data.token });
             alert(`[SECURE ACCESS] Your code is: ${mockOtp}`);
             setStep(2);
         } catch (err) {

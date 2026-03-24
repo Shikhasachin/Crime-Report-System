@@ -8,6 +8,7 @@
     "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview",
+    "start": "node src/backend/server.cjs",
     "server": "node src/backend/server.cjs"
   },
   "dependencies": {
@@ -17,6 +18,7 @@
     "bootstrap": "^5.3.8",
     "cors": "^2.8.6",
     "express": "^5.2.1",
+    "jsonwebtoken": "^9.0.3",
     "jspdf": "^4.0.0",
     "leaflet": "^1.9.4",
     "mongoose": "^9.2.1",

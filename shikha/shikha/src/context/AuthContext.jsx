@@ -18,14 +18,18 @@ export const AuthProvider = ({ children }) => {
     }, []);
 
     const login = (userData) => {
-        // userData: { name, email, role }
+        // userData: { name, email, role, token }
         setUser(userData);
         localStorage.setItem('crs_user', JSON.stringify(userData));
+        if (userData.token) {
+            localStorage.setItem('crs_token', userData.token);
+        }
     };
 
     const logout = () => {
         setUser(null);
         localStorage.removeItem('crs_user');
+        localStorage.removeItem('crs_token');
     };
 
     return (

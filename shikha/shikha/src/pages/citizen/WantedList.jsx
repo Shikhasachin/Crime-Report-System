@@ -11,7 +11,7 @@ const WantedList = () => {
     useEffect(() => {
         const fetchWanted = async () => {
             try {
-                const res = await axios.get('http://127.0.0.1:5001/api/criminal-records');
+                const res = await axios.get('/api/criminal-records');
                 setWanted(res.data.filter(c => c.status === 'Wanted'));
             } catch (error) {
                 console.error("Failed to fetch wanted list:", error);

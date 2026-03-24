@@ -18,7 +18,7 @@ const CriminalRecords = () => {
 
     const fetchRecords = async () => {
         try {
-            const response = await axios.get('http://127.0.0.1:5001/api/criminal-records');
+            const response = await axios.get('/api/criminal-records');
             setRecords(response.data);
             setLoading(false);
         } catch (err) {
@@ -30,7 +30,7 @@ const CriminalRecords = () => {
     const handleAddRecord = async (e) => {
         e.preventDefault();
         try {
-            await axios.post('http://127.0.0.1:5001/api/criminal-records', newRecord);
+            await axios.post('/api/criminal-records', newRecord);
             setShowModal(false);
             setNewRecord({ name: '', age: '', crimeType: '', status: 'Wanted', description: '', lastSeen: '', imageUrl: '' });
             fetchRecords();

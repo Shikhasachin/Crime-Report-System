@@ -44,14 +44,14 @@ const PoliceDashboard = () => {
 
     const fetchAlerts = async () => {
         try {
-            const res = await axios.get("http://127.0.0.1:5001/api/alerts");
+            const res = await axios.get("/api/alerts");
             setAlerts(res.data);
         } catch (err) { console.error(err); }
     };
 
     const fetchRecentUpdates = async () => {
         try {
-            const res = await axios.get("http://127.0.0.1:5001/api/case-updates/recent");
+            const res = await axios.get("/api/case-updates/recent");
             setRecentUpdates(res.data);
         } catch (err) { console.error(err); }
     };
@@ -59,7 +59,7 @@ const PoliceDashboard = () => {
     const handleDeleteReport = async (id) => {
         if (!window.confirm("WARNING: This will permanently delete this Official Case Log. Proceed?")) return;
         try {
-            await axios.delete(`http://127.0.0.1:5001/api/reports/${id}`);
+            await axios.delete(`/api/reports/${id}`);
             fetchReports();
         } catch (err) {
             alert("Failed to delete report.");
@@ -69,7 +69,7 @@ const PoliceDashboard = () => {
     const handleAddAlert = async (e) => {
         e.preventDefault();
         try {
-            await axios.post('http://127.0.0.1:5001/api/alerts', newAlert);
+            await axios.post('/api/alerts', newAlert);
             setNewAlert({ text: '', type: 'danger' });
             setShowAlertModal(false);
             fetchAlerts();
@@ -82,7 +82,7 @@ const PoliceDashboard = () => {
     const handleDeleteAlert = async (id) => {
         if (!window.confirm("Remove this alert broadcast from public view?")) return;
         try {
-            await axios.delete(`http://127.0.0.1:5001/api/alerts/${id}`);
+            await axios.delete(`/api/alerts/${id}`);
             fetchAlerts();
         } catch (err) {
             alert('Failed to delete alert: ' + err.message);
@@ -91,7 +91,7 @@ const PoliceDashboard = () => {
 
     const fetchCriminals = async () => {
         try {
-            const res = await axios.get('http://127.0.0.1:5001/api/criminal-records');
+            const res = await axios.get('/api/criminal-records');
             setCriminals(res.data);
         } catch (err) {
             console.error('Error fetching criminals:', err);
@@ -102,7 +102,7 @@ const PoliceDashboard = () => {
         e.preventDefault();
         setAddingCriminal(true);
         try {
-            await axios.post('http://127.0.0.1:5001/api/criminal-records', newCriminal);
+            await axios.post('/api/criminal-records', newCriminal);
             setNewCriminal({ name: '', age: '', crimeType: '', status: 'Wanted', lastSeen: '', description: '', imageUrl: '' });
             setShowAddCriminalModal(false);
             fetchCriminals();
@@ -117,7 +117,7 @@ const PoliceDashboard = () => {
     const handleDeleteCriminal = async (id) => {
         if (!window.confirm("Are you sure you want to permanently delete this criminal record?")) return;
         try {
-            await axios.delete(`http://127.0.0.1:5001/api/criminal-records/${id}`);
+            await axios.delete(`/api/criminal-records/${id}`);
             fetchCriminals();
         } catch (err) {
             alert('Failed to delete record: ' + err.message);
@@ -135,7 +135,7 @@ const PoliceDashboard = () => {
 
     const fetchReports = async () => {
         try {
-            const res = await axios.get("http://127.0.0.1:5001/api/reports");
+            const res = await axios.get("/api/reports");
             const data = res.data;
             setReports(data);
 
