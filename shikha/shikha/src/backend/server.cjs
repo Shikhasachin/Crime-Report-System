@@ -10,8 +10,15 @@ const JWT_SECRET = process.env.JWT_SECRET || 'super_secret_jwt_key_here';
 const app = express();
 
 // --- 1. MIDDLEWARE ---
-// Optimized CORS to allow everything during your development phase
-app.use(cors({ origin: "*" }));
+app.use(cors({
+  origin: [
+    "http://localhost:5173",
+    "http://127.0.0.1:5173",
+    "https://crime-report-system-eight.vercel.app"
+  ],
+  methods: ["GET", "POST", "PUT", "DELETE", "PATCH"],
+  credentials: true
+}));
 app.use(express.json());
 
 // --- 2. MONGODB CONNECTION ---
