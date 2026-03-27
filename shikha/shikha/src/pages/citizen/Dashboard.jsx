@@ -78,11 +78,18 @@ const Dashboard = () => {
             <div className="cyber-grid"></div>
 
             <Container style={{ position: 'relative', zIndex: 1 }}>
-                <div className="mb-5 d-flex justify-content-between align-items-end">
+                <div className="mb-5 d-flex justify-content-between align-items-center bg-white p-4 rounded-4 shadow-sm border" style={{ borderLeft: '6px solid #0f172a' }}>
                     <div>
-                        <Badge bg="success" className="mb-2 px-3 py-2 text-dark fw-bold">SYSTEM ACTIVE</Badge>
-                        <h2 className="fw-bold mb-0" style={{ fontSize: '2.5rem' }}>Welcome, {user?.username || user?.name || "Citizen"}</h2>
-                        <p className="opacity-50">KYC Verified Portal | Terminal Session: 0x{Math.floor(Math.random() * 1000000).toString(16)}</p>
+                        <Badge bg="primary" className="mb-2 px-3 py-1 rounded-pill" style={{ fontSize: '0.7rem' }}>KERALA POLICE DIGITAL PORTAL</Badge>
+                        <h2 className="fw-bold mb-0" style={{ fontSize: '2.2rem', color: '#0f172a' }}>Hello, {user?.username || "Citizen"}</h2>
+                        <p className="mb-0 text-muted small">Your safety is our priority. Last login: {new Date().toLocaleDateString()} | Node: 0x{Math.floor(Math.random() * 10000).toString(16)}</p>
+                    </div>
+                    <div className="d-none d-md-block text-end">
+                        <div className="text-muted small fw-bold mb-1">CURRENT STATUS</div>
+                        <div className="d-flex align-items-center text-success fw-bold">
+                            <span className="rounded-circle bg-success me-2" style={{ width: '10px', height: '10px', display: 'inline-block' }}></span>
+                            OPERATIONAL
+                        </div>
                     </div>
                 </div>
 
@@ -162,10 +169,13 @@ const Dashboard = () => {
                                     </div>
                                 </div>
                             ) : (
-                                <div className="p-5 text-center opacity-50">
-                                    <FaShieldAlt size={50} className="mb-3" />
-                                    <p>NO ACTIVE REPORTS FOUND FOR THIS ACCOUNT IDENTITY.</p>
-                                    <Button as={Link} to="/citizen/report" variant="outline-success" size="sm" className="rounded-pill px-4">FILE FIRST REPORT</Button>
+                                <div className="p-5 text-center bg-light m-3 rounded-4 border border-dashed" style={{ borderColor: '#cbd5e1' }}>
+                                    <div className="mb-4 d-inline-block p-4 rounded-circle bg-white shadow-sm">
+                                        <FaShieldAlt size={40} color="#64748b" />
+                                    </div>
+                                    <h5 className="fw-bold text-dark">No Active Case Records</h5>
+                                    <p className="text-muted small mb-4 mx-auto" style={{ maxWidth: '300px' }}>Your dashboard is currently clear. If you need to report an incident, use our secure portal below.</p>
+                                    <Button as={Link} to="/citizen/report" variant="dark" className="rounded-pill px-4 fw-bold shadow-sm">LODGE NEW REPORT</Button>
                                 </div>
                             )}
                         </Card>
