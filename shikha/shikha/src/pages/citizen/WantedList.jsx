@@ -60,17 +60,7 @@ const WantedList = () => {
                     </p>
                 </div>
 
-                <div className="d-flex justify-content-center mb-5">
-                    <InputGroup size="lg" style={{ maxWidth: '500px', boxShadow: '0 4px 15px rgba(0,0,0,0.05)' }} className="rounded-pill overflow-hidden border">
-                        <InputGroup.Text className="bg-white border-0 text-muted px-4"><FaSearch /></InputGroup.Text>
-                        <Form.Control
-                            className="bg-white border-0 fw-bold py-3"
-                            placeholder="Search by name or crime..."
-                            value={searchTerm}
-                            onChange={(e) => setSearchTerm(e.target.value)}
-                        />
-                    </InputGroup>
-                </div>
+
 
                 {loading ? (
                     <div className="py-5 text-center">
