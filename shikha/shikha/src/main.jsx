@@ -5,8 +5,8 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './index.css'
 import axios from 'axios';
 
-// Set the base URL directly to your live Render backend!
-axios.defaults.baseURL = import.meta.env.VITE_API_URL || 'https://crime-report-system-1-pw1x.onrender.com';
+// Set the base URL directly to your local backend for local development!
+axios.defaults.baseURL = import.meta.env.VITE_API_URL || 'http://localhost:5001';
 
 // Attach JWT token to all outgoing requests
 axios.interceptors.request.use(
