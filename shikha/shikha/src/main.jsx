@@ -6,7 +6,7 @@ import './index.css'
 import axios from 'axios';
 
 // Set the base URL directly to your live Render backend!
-axios.defaults.baseURL = import.meta.env.VITE_API_URL || 'https://crime-report-system-fdud.onrender.com';
+axios.defaults.baseURL = import.meta.env.VITE_API_URL || 'https://crime-report-system-1-pw1x.onrender.com';
 
 // Attach JWT token to all outgoing requests
 axios.interceptors.request.use(
